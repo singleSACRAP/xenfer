@@ -1,11 +1,23 @@
 local gamelist = {
     [994732206]  = "https://raw.githubusercontent.com/singleSACRAP/xenfer/Loader/BloxFruit",
-    [1451439645] = "https://raw.githubusercontent.com/singleSACRAP/xenfer/Loader/KingLegacy"
+    [1451439645] = "https://raw.githubusercontent.com/singleSACRAP/xenfer/Loader/KingLegacy",
+
+    Xenfer = {
+        ["Xenfer BETA"] = "https://raw.githubusercontent.com/singleSACRAP/xenfer/Loader/XenferBETA"
+    }
 }
+
 local checkgame = gamelist[game.gameId]
-if gamelist[game.gameId] then 
-print (checkgame)
-    loadstring(game:HttpGet(checkgame))()
-else 
-game.Players.LocalPlayer:Kick("Not Game Support")
+
+local xenferbeta = gamelist.Xenfer["Xenfer BETA"]
+
+if _G.XenferBETA then
+    loadstring(game:HttpGet(xenferbeta))()
+else
+    if gamelist[game.gameId] then 
+    print (checkgame)
+        loadstring(game:HttpGet(checkgame))()
+    else 
+    game.Players.LocalPlayer:Kick("Not Game Support")
+    end
 end
